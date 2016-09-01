@@ -1,0 +1,15 @@
+---
+- local_action:
+    module: gce_lb
+    name: "{{gce_lb_name}}"
+    region: "{{gce_region}}"
+    #members: ["us-central1-a/www-a", "us-central1-b/www-b"]
+    httphealthcheck_name: hc
+    httphealthcheck_port: 80
+    httphealthcheck_path: "/up"
+    service_account_email: "{{ gce_service_account_email }}" 
+    pem_file: "{{ gce_pem_file }}" 
+    project_id: "{{ gce_project_id }}" 
+    state: "{{gce_lb_state}}"
+
+# here comes the real playbook, executed after env check
